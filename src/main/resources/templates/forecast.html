@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Forecast</title>
+</head>
+<style>
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    color: #00008B;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    color: #DC143C;
+}
+li {color: #556B2F;}
+</style>
+<body>
+<h1>Weekly Forecast</h1>
+
+
+<article th:each="forecast : ${forecastArr}">
+
+
+            <h2 th:text="${forecast.date}">Date</h2>
+    <ul>
+                <li th:text="'Latitude: ' + ${forecast.latitude}">Latitude></li>
+                <li th:text="'Longitude: ' + ${forecast.longitude}">Longitude</li>
+                <li th:text="'Timezone: ' + ${forecast.timezone}">Timezone</li>
+                <li th:text="'Summary: ' + ${forecast.summary}">Summary</li>
+                <li th:text="'Sunrise: ' + ${forecast.sunrise}">Sunrise</li>
+                <li th:text="'Sunset: ' + ${forecast.sunset}">Sunset</li>
+                <li th:text="'Precipitation Probability: ' + ${forecast.precipProbability}">Precipitation Probability</li>
+                <li th:text="'Temperature Max: ' + ${forecast.temperatureMax}">Temperature Max</li>
+                <li th:text="'Wind Speed: ' + ${forecast.windSpeed}">Wind Speed</li>
+    </ul>
+</article>
+
+<a href="/forecast/form">Submit another Latitude and Longitude</a>
+</body>
+</html>
